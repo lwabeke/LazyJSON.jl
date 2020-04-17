@@ -1,5 +1,9 @@
 # AbstractString interface for JSON.String
 
+Base.pointer(s::LazyJSON.String) = pointer(s.s, s.i)
+Base.pointer(s::LazyJSON.String, i) = pointer(s.s, s.i+i-1)
+
+
 """
 Processes escape sequences and return a `Base.Substring`
 (without copying where possible).
